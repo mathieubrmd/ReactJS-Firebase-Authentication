@@ -20,9 +20,12 @@ export const signinPasswordChanged = (text) => ({
 export const signinUser = ({ email, password }) => {
     return (dispatch) => {
         dispatch({ type: SIGNIN_USER });
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(user => signinUserSuccess(dispatch, user))
-            .catch(error => signinUserFail(dispatch, error));
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .then(() => {       
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                    .then(user => signinUserSuccess(dispatch, user))
+                    .catch(error => signinUserFail(dispatch, error));
+            });
     }
 };
 
