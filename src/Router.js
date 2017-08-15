@@ -35,7 +35,7 @@ class Router extends Component {
                 <div>
                     <PublicRoute authed={authed} path='/authentication' component={Authentication} />
                     <PrivateRoute authed={authed} path='/profile' component={Profile} />
-                    <PrivateRoute authed={authed} path='/home' component={Profile} />
+                    <PrivateRoute authed={authed} path='/' component={Profile} />
                 </div>
             </BrowserRouter>
         );
