@@ -28,11 +28,14 @@ function PublicRoute ({component: Component, authed, ...rest}) {
 
 class Router extends Component {
     render() {
+        const { authed } = this.props;
+
         return (
             <BrowserRouter>
                 <div>
-                    <PublicRoute authed={this.props.authed} path='/authentication' component={Authentication} />
-                    <PrivateRoute authed={this.props.authed} path='/profile' component={Profile} />
+                    <PublicRoute authed={authed} path='/authentication' component={Authentication} />
+                    <PrivateRoute authed={authed} path='/profile' component={Profile} />
+                    <PrivateRoute authed={authed} path='/home' component={Profile} />
                 </div>
             </BrowserRouter>
         );
