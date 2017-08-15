@@ -60,6 +60,14 @@ class App extends Component {
 
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
+    if (module.hot) {
+      // Enable Webpack hot module replacement for reducers
+      module.hot.accept('./reducers', () => {
+        const nextRootReducer = require('./reducers/index');
+        store.replaceReducer(nextRootReducer);
+      });
+    }
+
     // While we check if the user is logged in, we render a loader
     return this.state.loading === true ? this.renderLoader() : (
       <Provider store={store}>

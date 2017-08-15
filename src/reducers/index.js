@@ -3,6 +3,6 @@ import SigninReducer from './SigninReducer';
 import SignupReducer from './SignupReducer';
 
 export default combineReducers({
-    signin: SigninReducer,
-    signup: SignupReducer
+  signin: SigninReducer,
+  signup: SignupReducer,
 });
